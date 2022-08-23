@@ -51,3 +51,12 @@ html,body {
     color: grey;
     transition: all .3s ease-out;
   }
+
+  .text-center {
+    text-align: center;
+  }
+
+.nada {
+  background: red;
+  height: 100vh;
+}
