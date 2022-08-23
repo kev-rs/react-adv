@@ -1,6 +1,5 @@
 import { LazyExoticComponent } from "react";
 
-//TODO: see later
 type JSX = () => JSX.Element;
 
 export interface Route {
@@ -13,3 +12,4 @@ export interface Route {
 export interface Routes {
     routes: Route[];
 }
+

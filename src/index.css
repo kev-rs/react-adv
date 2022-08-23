@@ -60,3 +60,7 @@ html,body {
   background: red;
   height: 100vh;
 }
+
+.hero {
+  display: flex;
+}
