@@ -4,12 +4,15 @@ import { Provider } from '../context/store';
 import { Props } from '../models/shop.interfaces';
 
 
-export const ProductCart = ({product, children}:Props) => {
+export const ProductCart = ({product, children, className, style}:Props) => {
 
     const { value, increaseBy } = useProduct();
 
   return (
-    <div className={styles.productCard}>
+    <div 
+      className={`${styles.productCard} ${className}`}
+      style={style}
+    >
         <Provider value={{increaseBy, value, product}}>
             { children }
         </Provider>

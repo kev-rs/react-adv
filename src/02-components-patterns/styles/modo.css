@@ -1,0 +1,16 @@
+.dark {
+    background: #333;
+}
+
+.light {
+    background: #fff;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.custom-img {
+    border: 10px solid #333;
+    width: calc(100% - 20px);
+}
