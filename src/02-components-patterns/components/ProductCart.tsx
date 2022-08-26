@@ -1,12 +1,12 @@
 import { useProduct } from '../hooks/useProduct';
-import styles from '../styles/styles.module.css'
 import { Provider } from '../context/store';
 import { Props } from '../models/shop.interfaces';
+import styles from '../styles/styles.module.css'
 
 
-export const ProductCart = ({product, children, className, style}:Props) => {
+export const ProductCart = ({product, children, className, style, onChange, counter}:Props) => {
 
-    const { value, increaseBy } = useProduct();
+    const { value, increaseBy } = useProduct({onChange, product, counter});
 
   return (
     <div 

@@ -1,12 +1,16 @@
-import styles from '../styles/styles.module.css'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ShopContext } from '../context/store';
-import { Style } from '../models/shop.interfaces';
+import { Btn } from '../models/shop.interfaces';
+import styles from '../styles/styles.module.css'
 
-export const ProductBtns = ({className, style}:Style) => {
+export const ProductBtns = ({className, style}:Btn) => {
 
     const { increaseBy, value } = useContext(ShopContext);
 
+    // useEffect(() => {
+    //     console.log(value);
+    // }, [value])
+    
     return (
         <div 
             className={styles.buttonsContainer}
@@ -16,7 +20,10 @@ export const ProductBtns = ({className, style}:Style) => {
                 className={`${styles.buttonMinus} ${className}`}
                 onClick={() => increaseBy(-1)}
             >-</button>
-            <div className={`${styles.countLabel} ${className}`}>{value}</div>
+
+            <div 
+                className={`${styles.countLabel} ${className}`}
+            >{ value }</div>
 
             <button
                 className={`${styles.buttonAdd} ${className}`}

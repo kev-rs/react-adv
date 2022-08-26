@@ -1,12 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Product, On_change } from '../models/shop.interfaces';
 
-export const useProduct = () => {
+export interface Args {
+    product: Product;
+    onChange?: (Props:On_change) => void;
+    counter?: number;
+}
+
+export const useProduct = ({onChange, product, counter=0}:Args) => {
     
     const [value, setValue] = useState(0);
-
+    
     const increaseBy = (n:number) => {
-        setValue(prev => Math.max(prev + n, 0));
+        const newValue = Math.max(value + n, 0)
+        setValue(newValue);
+
+        onChange && onChange({value: newValue, product});
     }
+
+    useEffect(() => {
+        setValue(counter);
+    }, [counter]);
 
     return { value, increaseBy };
 }

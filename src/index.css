@@ -51,3 +51,38 @@ html,body {
     color: grey;
     transition: all .3s ease-out;
   }
+
+.nav-cart {
+  animation: nav 0.3s;
+}
+
+@keyframes nav {
+  from {transform: translateX(-60px);}
+  to {transform: translateX(0);}
+}
+
+.nav-btn {
+    border: none;
+    background: #333;
+    color: #fff;
+}
+
+.nav-btn:hover {
+  cursor: pointer;
+}
+
+.nav-btn-style {
+  margin-right: 20px;
+  height: 100vh;
+  transition: all .3s;
+}
+
+.nav-btn-style:hover {
+  background: #434343;
+}
+
+.product-cart-aside {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
