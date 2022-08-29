@@ -5,6 +5,7 @@ interface Store {
     increaseBy: (n:number) => void;
     value: number;
     product: Product;
+    maxCount?: number;
 }
 
 export const ShopContext = createContext<Store>({} as Store);

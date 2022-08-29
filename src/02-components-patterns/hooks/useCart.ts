@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { On_change, Product } from "../models/shop.interfaces";
+import { On_Change, Product } from "../models/shop.interfaces";
 
 interface ProductInCart extends Product {
     counter: number;
@@ -12,7 +12,7 @@ export interface Cart {
 export const useCart = () => {
     const [cart, setCart] = useState<Cart>({});
       
-    const handleChange = ({value, product}:On_change) => {
+    const handleChange = ({value, product}:On_Change) => {
         setCart(prev => {
             const productInCart:ProductInCart = cart[product.id] || {...product, counter: 0}
 

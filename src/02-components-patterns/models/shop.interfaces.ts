@@ -1,13 +1,19 @@
 //? TS
 
-export interface Props extends Style {
-    product: Product;
-    children?: JSX.Element | JSX.Element[];
-    onChange?: (Props:On_change) => void;
-    counter?: number;
+export interface Initial_Value {
+    count?: number;
+    maxCount?: number;
 }
 
-export interface On_change {
+export interface Props extends Style {
+    product: Product;
+    children: () => JSX.Element;
+    onChange?: (Props:On_Change) => void;
+    counter?: number;
+    initialValue?: Initial_Value;
+}
+
+export interface On_Change {
     product: Product;
     value: number;
 }
