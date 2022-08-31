@@ -61,13 +61,6 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* .disabled {
-    border-color: grey !important;
-    border-left: 1px solid black   !important;
-    color: grey !important;
-    cursor:not-allowed;
-} */
-
 .disabled:disabled {
     border-color: grey !important;
     border-left: 1px solid black   !important;
