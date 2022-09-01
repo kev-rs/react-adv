@@ -1,46 +1,88 @@
+import { Product } from '../components'
 import { products } from '../data/products';
-import { ProductCart } from '../components/index'
-import '../styles/modo.css'
+import { useState } from 'react';
+import { Product as Product_ } from '../models/shop.interfaces';
 
-const product = products[0];
+interface ProductInCart extends Product_ {
+    count: number;
+}
+
+export interface onChange {
+    n: number;
+    product: Product_;
+    count?: number;
+}
 
 const ShoppingPage = () => {
 
-  return (
-    <div>
-      <h1>ShoppingPage</h1>
-      <hr />
-      <ProductCart
-        key={product.id}
-        product={product}
-        className='dark'
-        initialValue={{
-          count: 4,
-          maxCount: 10,
-        }}
-      >
-        {
-          ({reset, increaseBy, maxCount, isMaxReached, count, product}) => (
-            console.log(isMaxReached),
-            <>
-              <ProductCart.Img className='custom-img' />
-              <ProductCart.Title className='text-white' />
-              <ProductCart.Btns className='text-white' />
+    const [ cart, setCart ] = useState<{[key:string]: ProductInCart}>({});
 
-              <button onClick={reset}>reset</button>
-              
-              <button onClick={() => increaseBy(-2)}>-2</button>
-              {!isMaxReached &&
-                <button onClick={() => increaseBy(2)}>+2</button>
-              }
-              <span>{count} - {maxCount}</span>
-            </>
-          )
+    const onChange = ({n, product, count}:onChange):void => {
+        setCart(prev => {
+            const productInCart = cart[product.id] || {...product, count}
+
+            if(Math.max(productInCart.count + n, 0) > 0) {
+                productInCart.count += n;
+                return {...prev, [product.id]: productInCart};
+            }
+
+            const { [product.id]:toDelete, ...rest } = prev;
+            return {...rest};
+        })
+    }
+
+  return (
+    <>
+        {
+            products.map(product => (
+                <Product
+                    key={product.id}
+                    product={product}
+                    onChange={onChange}
+                    counter={cart[product.id]?.count}
+                    initialValue={{
+                        count: 2,
+                        maxCount: 8,
+                    }}
+                >
+                    {() => (
+                        <>
+                            <Product.Img />
+                            <Product.Info />
+                            <Product.Btn />
+                        </>
+                    )}
+                </Product>
+            ))
         }
-      </ProductCart>
-    </div>
+
+            <div className='cart'>        
+                {
+                    Object.entries(cart).map(([key, value]) => (
+                        <Product
+                            key={key}
+                            product={value}
+                            onChange={onChange}
+                            counter={value.count}
+                            initialValue={{
+                                count: 2,
+                                maxCount: 8,
+                            }}
+                            className='cart-img' 
+                        >
+                            {() => (
+                                <>
+                                    <Product.Img className='img-cart' />
+                                    <Product.Btn />
+                                </>
+                            )}
+                        </Product>
+                    ))
+                }
+            </div>
+        
+    </>
   )
 }
 
 export default ShoppingPage;
-

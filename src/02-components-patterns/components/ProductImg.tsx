@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { ShopContext } from '../context/store';
 import styles from '../styles/styles.module.css'
 import noImg from '../assets/no-image.jpg'
+import { useContext } from 'react';
+import { ShopContext } from '../context/store';
 import { Img } from '../models/shop.interfaces';
 
-export const ProductImg = ({img}:Img) => {
+export const ProductImg = ({img, className}:Img) => {
 
     const { product } = useContext(ShopContext);
 
@@ -19,7 +19,9 @@ export const ProductImg = ({img}:Img) => {
     }
 
     return (
-        <img className={`${styles.productImg}`} src={imgToShow} alt="Product" />
+        <div>
+            <img className={`${styles.productImg}`} src={imgToShow} alt="Product" />
+        </div>
     )
 }
 

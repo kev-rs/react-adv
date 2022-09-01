@@ -1,20 +1,12 @@
-import { ProductCart as ProductCartHOC } from './ProductCart';
-import { ProductImg } from './ProductImg';
-import { ProductTitle } from './ProductTitle';
+import { ProductCart } from './ProductCart'
+import { ProductImg } from './ProductImg'
+import { ProductTitle } from './ProductTitle'
 import { ProductBtns } from './ProductBtns';
-import { Lib } from '../models/shop.interfaces';
+import { Pkg } from '../models/shop.interfaces';
 
-
-export { ProductImg } from './ProductImg';
-export { ProductTitle } from './ProductTitle';
-export { ProductBtns } from './ProductBtns';
-
-
-
-export const ProductCart:Lib = Object.assign(ProductCartHOC, {
+export const Product:Pkg = Object.assign(ProductCart, {
     Img: ProductImg,
-    Title: ProductTitle,
-    Btns: ProductBtns,
+    Info: ProductTitle,
+    Btn: ProductBtns,
 })
 
-// export default ProductCart;

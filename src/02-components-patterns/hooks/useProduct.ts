@@ -1,51 +1,37 @@
-import { useEffect, useState, useRef } from "react";
-import { Product, On_Change, Initial_Value } from "../models/shop.interfaces";
+import { useState, useRef, useEffect } from 'react';
+import { Product, Initial_Value } from '../models/shop.interfaces';
+import { onChange } from '../pages/ShoppingPage';
 
-export interface Args {
-  product: Product;
-  onChange?: (Props: On_Change) => void;
-  counter?: number;
-  initialValue?: Initial_Value;
+interface Props {
+    product: Product;
+    onChange: (Props:onChange) => void;
+    counter: number;
+    initialValue?: Initial_Value;
 }
 
-export const useProduct = ({ onChange, product, counter = 0, initialValue }: Args) => {
-  const [value, setValue] = useState<number>(initialValue?.count || counter);
+export const useProduct = ({product, onChange, counter, initialValue}:Props) => {
+    const [ value, setValue ] = useState<number>(initialValue?.count!);
 
-  const isControlled = useRef(!!onChange);
-  const isMounted = useRef(false);
+    const isControlled = useRef(!!onChange);
+    const isMounted = useRef(false);
 
-  const increaseBy = (n:number):void => {
-    // ? 1 - option
-    if (value === initialValue?.maxCount && n !== -1) return; // stop when value reach his max value
-    //? 2 - option
-    // if(initialValue?.maxCount) newValue = Math.min(newValue, initialValue.maxCount);
+    const increaseBy = (n:number):void => {
+        if(value === initialValue?.maxCount && n !== -1) return;
 
-    if (isControlled.current) return onChange!({ value: n, product }); // if onChange exists
+        if(isControlled) return onChange!({n, product, count: initialValue?.count});
 
-    const newValue = Math.max(value + n, 0);
-    setValue(newValue);
-    onChange && onChange({ value: newValue, product });
-  };
+        setValue(prev => Math.max(prev + n, 0)); // if is not controlled run this
+    }
 
-	const reset = ():void => {
-		setValue(initialValue?.count || counter);
-	}
+    useEffect(() => {
+        if(!isMounted.current) return;
+        setValue(counter);
+    }, [counter]);
 
-  useEffect(() => {
-    if (!isMounted.current) return;
-    setValue(counter); // not run until isMounted = true;
-  }, [counter]);
+    useEffect(() => {
+        isMounted.current = true;
+    }, [])
 
-  // once the component or hook has been used, isMounted = true
-  useEffect(() => {
-    isMounted.current = true;
-  }, []);
-
-  return { 
-		value, 
-		increaseBy,
-		isMaxReached: !!initialValue?.count && initialValue.maxCount === value,
-		reset,
-	};
-};
+    return {value, increaseBy};
+}
 

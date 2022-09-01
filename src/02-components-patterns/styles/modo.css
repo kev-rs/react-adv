@@ -14,3 +14,15 @@
     border: 10px solid #333;
     width: calc(100% - 20px);
 }
+
+.cart {
+    /* background-color: red; */
+    /* height: 100vh; */
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.cart-img {
+    width: 150px;
+}

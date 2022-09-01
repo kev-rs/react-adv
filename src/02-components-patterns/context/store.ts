@@ -2,8 +2,8 @@ import { createContext } from 'react';
 import { Product } from '../models/shop.interfaces';
 
 interface Store {
-    increaseBy: (n:number) => void;
     value: number;
+    increaseBy: (n:number) => void;
     product: Product;
     maxCount?: number;
 }

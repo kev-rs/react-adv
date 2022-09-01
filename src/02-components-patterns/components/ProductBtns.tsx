@@ -1,30 +1,28 @@
-import { useCallback, useContext } from 'react';
-import { ShopContext } from '../context/store';
-import { Btn } from '../models/shop.interfaces';
 import styles from '../styles/styles.module.css'
+import { useContext, useCallback } from 'react';
+import { ShopContext } from '../context/store';
 
-export const ProductBtns = ({ className, style }:Btn) => {
+export const ProductBtns = () => {
 
-  const { increaseBy, value, maxCount } = useContext(ShopContext);
+  const { value, increaseBy, maxCount } = useContext(ShopContext);
 
-  const isMaxReached = useCallback(() => !!maxCount && value === maxCount, [value, maxCount]);
+  const isMaxReached = useCallback(() => !!value && value === maxCount, [value, maxCount])
 
   return (
     <div
       className={styles.buttonsContainer}
-      style={style}
     >
       <button
-        className={`${styles.buttonMinus} ${className}`}
+        className={`${styles.buttonMinus}`}
         onClick={() => increaseBy(-1)}
       >-</button>
 
       <div
-        className={`${styles.countLabel} ${className}`}
-      >{value}</div>
+        className={`${styles.countLabel}`}
+      >{value || 0}</div>
 
       <button
-        className={`${styles.buttonAdd} ${className} ${styles.disabled}`}
+        className={`${styles.buttonAdd} ${styles.disabled}`}
         disabled={isMaxReached()}
         onClick={() => increaseBy(1)}
       >+</button>
