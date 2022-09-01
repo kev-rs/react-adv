@@ -16,7 +16,6 @@ export interface Cart_args {
   isMaxReached: boolean;
   maxCount?: number;
   product: Product;
-  
   increaseBy: (value:number) => void;
   reset: () => void;
 }
@@ -54,8 +53,4 @@ export interface Img extends Style {
 
 export interface Btn extends Style {
   value?: number;
-  // count: number;
-  // isMaxReached: boolean;
-  // increaseBy: (value:number) => void;
-  // reset: () => void;
 }
