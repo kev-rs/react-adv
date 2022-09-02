@@ -1,4 +1,4 @@
-import { Product } from '../components'
+import { Product } from '../components';
 import { products } from '../data/products';
 import { useState } from 'react';
 import { Product as Product_ } from '../models/shop.interfaces';
