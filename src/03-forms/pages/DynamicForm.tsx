@@ -8,7 +8,6 @@ const fieldsValidations:{[key:string]: any} = {};
 
 formJson.forEach(({ types, validations, name, value }) => {
     initialValues[name] = value;
-    if(!validations) return;
 
     let schema = (yup as any)[types]();
 
