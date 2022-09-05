@@ -1,8 +1,10 @@
 export interface Option {
-    value?: string;
+    id: number;
+    value: string;
     text: string;
 }
 
-export interface Options {
-    [key:string]: Option;
-}
+// export interface Options {
+//     options: Option;
+//     // [key:string]: Option;
+// }

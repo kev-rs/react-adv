@@ -1,0 +1,73 @@
+[
+    {
+        "type": "input",
+        "name": "firstName",
+        "placeholder": "Name",
+        "label": "First Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "error_message": "Este campo es obligatorio"
+            },
+            {
+                "type": "minLength",
+                "value": 6
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastName",
+        "placeholder": "Last Name",
+        "label": "Last Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "error_message": "Este campo es obligatorio"
+            },
+            {
+                "type": "minLength",
+                "value": 6
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "placeholder": "user@email.com",
+        "label": "Email",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "error_message": "Este campo es obligatorio"
+            },
+            {
+                "type": "email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "jobType",
+        "label": "Job Type",
+        "value": "",
+        "options": [
+            {"id": 1, "value": "", "text": "Select"},
+            {"id": 2, "value": "dev", "text": "Dev"},
+            {"id": 3, "value": "senior", "text": "Senior"}
+        ],
+        "validations": [
+            {
+                "type": "required",
+                "error_message": "Este campo es obligatorio"
+            },
+            {
+                "type": "notOneOf",
+                "value": ["dev"]
+            }
+        ]
+    }
+]

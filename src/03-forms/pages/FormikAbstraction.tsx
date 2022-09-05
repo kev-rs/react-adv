@@ -28,7 +28,7 @@ const FormikAbstraction = () => {
                     <Input label='First Name' name='firstName' />
                     <Input label='Last name' name='lastName' />
                     <Input label='Email' name='email' type='email' />
-                    <Select label='Job Type' name='ocupation' options={options} />
+                    {/* <Select label='Job Type' name='ocupation' options={options} /> */}
                     <Input label='Terms & conditions' name='terms' type='checkbox' />
 
                     <button type='submit'>Create</button>

@@ -1,10 +1,10 @@
 import { useField, ErrorMessage } from 'formik';
-import { Options } from '../interfaces/form.interfaces';
+import { Option } from '../interfaces/form.interfaces';
 
 interface Props {
     label: string;
     name: string;
-    options?: Options;
+    options?: Option[];
     [x:string]: any;
 }
 
@@ -16,8 +16,8 @@ export const Select = ({label, options, ...props}:Props) => {
     <>
         <label htmlFor={props.id || props.name}>{label}</label>
         <select {...field} {...props}>
-            {Object.entries(options!).map(([key, value]) => (
-                <option value={value.value} key={key}>{value.text}</option>
+            {options?.map(({id, value, text}) => (
+                <option value={value} key={id}>{text}</option>
             ))}
         </select>
         <ErrorMessage name={props.name} component='span' className='error' />
