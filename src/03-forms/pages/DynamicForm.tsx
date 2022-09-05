@@ -3,32 +3,27 @@ import { Input } from '../components/Input2'
 import formJson from '../data/config-form.json'
 import * as yup from 'yup';
 
-
-
 const initialValues:{[key:string]: any} = {};
 const fieldsValidations:{[key:string]: any} = {};
 
-formJson.forEach((input) => {
-    initialValues[input.name] = input.value
-    if(!input.validations) return;
+formJson.forEach(({ types, validations, name, value }) => {
+    initialValues[name] = value;
+    if(!validations) return;
 
-    let schema = yup.string()
+    let schema = (yup as any)[types]();
 
-    input.validations.forEach((rule) => {
-        if(rule.type === 'required') schema = schema.required(rule.error_message);
-        if(rule.type === 'minLength') schema = schema.min((rule as any).value || 2, `Minimo ${(rule as any).value || 2} length`)
-        if(rule.type === 'email') schema = schema.email();
-        if(rule.type === 'notOneOf') schema = schema.notOneOf((rule as any).value, 'Option not available');
-        //TODO: other rules
+    validations.forEach((rule) => {
+        const { params, type } = rule;
+        if(!schema[type]) return;
+        
+        schema = schema[type](...params);
     })
-    fieldsValidations[input.name] = schema;
+    fieldsValidations[name] = schema;
 })
 
 const validationSchema = yup.object({...fieldsValidations})
 
 export const DynamicForm = () => {
-
-    console.log(formJson);
 
   return (
     <div>

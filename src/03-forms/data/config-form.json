@@ -1,6 +1,7 @@
 [
     {
         "type": "input",
+        "types": "string",
         "name": "firstName",
         "placeholder": "Name",
         "label": "First Name",
@@ -8,16 +9,17 @@
         "validations": [
             {
                 "type": "required",
-                "error_message": "Este campo es obligatorio"
+                "params": ["Este campo es obligatorio"]
             },
             {
-                "type": "minLength",
-                "value": 6
+                "type": "min",
+                "params": [6, "Minimo 6 characters"]
             }
         ]
     },
     {
         "type": "input",
+        "types": "string",
         "name": "lastName",
         "placeholder": "Last Name",
         "label": "Last Name",
@@ -25,16 +27,17 @@
         "validations": [
             {
                 "type": "required",
-                "error_message": "Este campo es obligatorio"
+                "params": ["Este campo es obligatorio"]
             },
             {
-                "type": "minLength",
-                "value": 6
+                "type": "min",
+                "params": [6, "Minimo 6 characters"]
             }
         ]
     },
     {
         "type": "email",
+        "types": "string",
         "name": "email",
         "placeholder": "user@email.com",
         "label": "Email",
@@ -42,15 +45,17 @@
         "validations": [
             {
                 "type": "required",
-                "error_message": "Este campo es obligatorio"
+                "params": ["Este campo es obligatorio"]
             },
             {
-                "type": "email"
+                "type": "email",
+                "params": ["Email no valido"]
             }
         ]
     },
     {
         "type": "select",
+        "types": "string",
         "name": "jobType",
         "label": "Job Type",
         "value": "",
@@ -62,11 +67,11 @@
         "validations": [
             {
                 "type": "required",
-                "error_message": "Este campo es obligatorio"
+                "params": ["Este campo es obligatorio"]
             },
             {
                 "type": "notOneOf",
-                "value": ["dev"]
+                "params": [["dev"], "Esta option is not available"]
             }
         ]
     }
