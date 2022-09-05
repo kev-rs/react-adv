@@ -23,3 +23,10 @@ span, .error-message {
 .has-error {
     border: 1px solid red;
 }
+
+.error-ts {
+    font-size: 20px;
+    position: relative;
+    top: 6px;
+    right: -6px;
+}
