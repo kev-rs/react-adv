@@ -58,7 +58,7 @@
     },
     {   
         "tag": "input",
-        "name": "confirm_password",
+        "name": "confirm_pass",
         "type": "password",
         "value": "",
         "label": "Confirm Password",
@@ -68,10 +68,6 @@
             {
                 "type": "required",
                 "params": ["Required"]
-            },
-            {
-                "type": "oneOf",
-                "params": [["yup.ref(password)", null], "Passwords not match"]
             }
         ]
     }

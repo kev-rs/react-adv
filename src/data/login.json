@@ -1,0 +1,36 @@
+[
+    {   
+        "tag": "input",
+        "name": "email",
+        "type": "email",
+        "value": "",
+        "label": "Email Address",
+        "types": "string",
+        "placeholder": "user@email.com",
+        "validations": [
+            {
+                "type": "required",
+                "params": ["Required"]
+            },
+            {
+                "type": "email",
+                "params": []
+            }
+        ]
+    },
+    {   
+        "tag": "input",
+        "name": "password",
+        "type": "password",
+        "value": "",
+        "label": "Password",
+        "types": "string",
+        "placeholder": "",
+        "validations": [
+            {
+                "type": "required",
+                "params": ["Required"]
+            }
+        ]
+    }
+]
