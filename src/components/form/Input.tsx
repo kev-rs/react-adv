@@ -13,12 +13,12 @@ interface Props {
 const Input = ({label, ...props}:Props) => {
 
     const [ field ] = useField(props);
-
+    
   return (
     <>
         <label>{label}</label>
         <input {...field} {...props} />
-        <ErrorMessage name={props.name} component={'span'} />
+        <ErrorMessage name={props.name} component={'span'} className='error' />
     </>
   )
 }

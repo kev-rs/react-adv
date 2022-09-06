@@ -4,21 +4,26 @@ import jsonForm from '../../data/config-form.json'
 import Input from '../form/Input';
 
 const initialValues:{[key:string]: any} = {};
-const validationSchema:{[key:string]: any} = {};
+const validationFields:{[key:string]: any} = {};
 
-jsonForm.forEach(({ name, value, type, validations }) => {
+jsonForm.forEach(({ name, value, types, validations }) => {
     initialValues[name] = value;
     
-    let validator = (yup as any)[type]();
+    let validator = (yup as any)[types]();
+    
     validations.forEach(({params, type}) => {
         if(!validator[type]) return;
 
         validator = validator[type](...params);
     })
-    validationSchema[name] = validator;
+    validationFields[name] = validator;
 })
 
+const validationSchema = yup.object({...validationFields})
+
 const Sign_up = () => {
+    console.log(jsonForm);
+    
   return (
     <>
         <h1 className='title'>Register</h1>
@@ -34,7 +39,7 @@ const Sign_up = () => {
                 {(formik) => (
                     <Form className='form'>
                         {
-                            jsonForm.map(({name, label, ...rest}) => (
+                            jsonForm.map(({name, label, value, ...rest}) => (
                                 <Input key={name} name={name} label={label} {...rest} />
                             ))
                         }

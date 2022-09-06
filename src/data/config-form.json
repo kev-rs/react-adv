@@ -2,10 +2,11 @@
     {   
         "tag": "input",
         "name": "name",
+        "type": "text",
         "value": "",
         "label": "Name",
+        "types": "string",
         "placeholder": "user",
-        "type": "string",
         "validations": [
             {
                 "type": "required",
@@ -20,11 +21,16 @@
     {   
         "tag": "input",
         "name": "email",
+        "type": "email",
         "value": "",
         "label": "Email Address",
+        "types": "string",
         "placeholder": "user@email.com",
-        "type": "string",
         "validations": [
+            {
+                "type": "required",
+                "params": ["Required"]
+            },
             {
                 "type": "email",
                 "params": []
@@ -34,14 +40,15 @@
     {   
         "tag": "input",
         "name": "password",
+        "type": "password",
         "value": "",
         "label": "Password",
+        "types": "string",
         "placeholder": "",
-        "type": "string",
         "validations": [
             {
                 "type": "required",
-                "params": []
+                "params": ["Required"]
             },
             {
                 "type": "min",
@@ -52,14 +59,15 @@
     {   
         "tag": "input",
         "name": "confirm_password",
+        "type": "password",
         "value": "",
         "label": "Confirm Password",
+        "types": "string",
         "placeholder": "",
-        "type": "string",
         "validations": [
             {
                 "type": "required",
-                "params": []
+                "params": ["Required"]
             },
             {
                 "type": "oneOf",
