@@ -1,0 +1,70 @@
+[
+    {   
+        "tag": "input",
+        "name": "name",
+        "value": "",
+        "label": "Name",
+        "placeholder": "user",
+        "type": "string",
+        "validations": [
+            {
+                "type": "required",
+                "params": []
+            },
+            {
+                "type": "min",
+                "params": [6]
+            }
+        ]
+    },
+    {   
+        "tag": "input",
+        "name": "email",
+        "value": "",
+        "label": "Email Address",
+        "placeholder": "user@email.com",
+        "type": "string",
+        "validations": [
+            {
+                "type": "email",
+                "params": []
+            }
+        ]
+    },
+    {   
+        "tag": "input",
+        "name": "password",
+        "value": "",
+        "label": "Password",
+        "placeholder": "",
+        "type": "string",
+        "validations": [
+            {
+                "type": "required",
+                "params": []
+            },
+            {
+                "type": "min",
+                "params": [6]
+            }
+        ]
+    },
+    {   
+        "tag": "input",
+        "name": "confirm_password",
+        "value": "",
+        "label": "Confirm Password",
+        "placeholder": "",
+        "type": "string",
+        "validations": [
+            {
+                "type": "required",
+                "params": []
+            },
+            {
+                "type": "oneOf",
+                "params": [["yup.ref(password)", null], "Passwords not match"]
+            }
+        ]
+    }
+]
