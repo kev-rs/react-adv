@@ -1,10 +1,9 @@
-import Router from "./Routes/Router";
-import './02-components-patterns/styles/modo.css'
+
+
 const App = () => {
-  
   return (
-    <Router />
+    <div>App</div>
   )
 }
 
-export default App;
+export default App
