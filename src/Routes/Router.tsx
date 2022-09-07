@@ -1,22 +1,27 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Sign_in from '../components/auth/Sign_in'
-import Sign_up from '../components/auth/Sign_up'
+import SignIn from '../components/auth/SignIn'
+import SignUp from '../components/auth/SignUp'
 import Home from '../components/heroes/Home'
+import { useAppSelector } from '../hooks/redux-hooks';
 
 const Router = () => {
+
+    const { online } = useAppSelector(state => state.auth);
+
   return (
     <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Home />}>
-
-            </Route>
-            
-            <Route path='/auth'>
-                <Route path='/auth/register' element={<Sign_up />} />
-                <Route path='/auth/login' element={<Sign_in />} />
-                <Route index element={<Sign_in />} />
-                <Route path='*' element={<NotFound />} />
-            </Route>
+            {
+                online
+                    ? <Route path='/' element={<Home />} />
+                    :
+                        <Route path='/auth'>
+                            <Route path='/auth/register' element={<SignUp />} />
+                            <Route path='/auth/login' element={<SignIn />} />
+                            <Route index element={<SignIn />} />
+                            <Route path='*' element={<NotFound />} />
+                        </Route>
+            }
         </Routes>
     </BrowserRouter>
   )
